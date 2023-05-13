@@ -14,20 +14,19 @@ export default function App() {
   const [letraClicada, setletraClicada] = useState([])
   const [qtdErros, setqtdErros] = useState(0)
   const [corLetra, setcorLetra] = useState("")
-  let [tentativa, setTentativa] = useState("")
+ // let [tentativa, setTentativa] = useState("")
 
   const renderPalavra = palavraEscolhida.map((l, index) => letraClicada.includes(palavraEscolhida[index]) ? l : " _")
-  console.log(palavraEscolhida)
   const palavraAleatoria = palavras[Math.floor(Math.random() * palavras.length)]
 
-  const [palavraChute, setpalavraChute] = useState(null)
+  //const [palavraChute, setpalavraChute] = useState(null)
 
 
   function iniciarJogo() {
     const arrayPalavra = [...palavraAleatoria]
     setpalavraEscolhida(arrayPalavra)
     setDesativado(false)
-    setTentativa("")
+    //setTentativa("")
     setcorLetra("")
     setimagemForca("assets/forca0.png")
     setqtdErros(0)
