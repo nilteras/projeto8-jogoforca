@@ -1,5 +1,5 @@
-import style from './css/style.css'
-import palavras from './Palavras'
+
+import palavras from './palavras'
 import Letras from './components/Letras'
 import Jogo from './components/Jogo'
 import { useState } from 'react'
@@ -19,6 +19,8 @@ export default function App() {
   const renderPalavra = palavraEscolhida.map((l, index) => letraClicada.includes(palavraEscolhida[index]) ? l : " _")
   console.log(palavraEscolhida)
   const palavraAleatoria = palavras[Math.floor(Math.random() * palavras.length)]
+
+  const [palavraChute, setpalavraChute] = useState(null)
 
 
   function iniciarJogo() {
@@ -65,13 +67,13 @@ export default function App() {
   }
 
   function jogadorGanhou(){
-    setpalavraEscolhida([])
+    setpalavraEscolhida(palavraEscolhida)
     setcorLetra("correta")
     setDesativado(true)
   }
 
   function jogadorPerdeu() {
-    setpalavraEscolhida([])
+    setpalavraEscolhida(palavraEscolhida)
     setcorLetra("incorreta")
     setimagemForca("assets/forca6.png")
     setDesativado(true)
