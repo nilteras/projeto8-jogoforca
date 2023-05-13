@@ -1,12 +1,16 @@
-export default function Jogo({imagemForca, iniciarJogo}) {
+export default function Jogo({imagemForca, iniciarJogo, renderPalavra, corLetra, palavraAleatoria}) {
 
 
     return (
         <div className='container'>
-          <img className="forca" src={imagemForca} />
+          <img className="forca" data-test="game-image" src={imagemForca} />
           
           <div className="container-direita">
-            <div className="escolherPalavra" onClick={() => iniciarJogo()}><p>Escolher Palavra</p></div>
+            <div className="escolherPalavra" data-test="choose-word" onClick={() => iniciarJogo()}><p>Escolher Palavra</p></div>
+            <div className={`palavra ${corLetra}`} data-test="word" data-answer={palavraAleatoria}>
+                {renderPalavra}
+                
+            </div>
 
 
 
