@@ -1,4 +1,4 @@
-export default function Jogo({imagemForca, iniciarJogo, renderPalavra, corLetra, palavraAleatoria}) {
+export default function Jogo({imagemForca, iniciarJogo, renderPalavra, corLetra, palavraAleatoria, palavraChute}) {
 
 
     return (
@@ -9,15 +9,11 @@ export default function Jogo({imagemForca, iniciarJogo, renderPalavra, corLetra,
             <div className="escolherPalavra" data-test="choose-word" onClick={() => iniciarJogo()}><p>Escolher Palavra</p></div>
             <div className={`palavra ${corLetra}`} data-test="word" data-answer={palavraAleatoria}>
                 {renderPalavra}
+                {palavraChute !== null ? palavraChute.map((i) => i) : false}
                 
             </div>
-
-
-
           </div>
         </div>
-
-
 
     );
 

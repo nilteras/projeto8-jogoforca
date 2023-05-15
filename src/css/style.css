@@ -36,6 +36,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-right: 53px;
 }
 
 .escolherPalavra {
@@ -86,7 +87,7 @@ body {
     width: 716px;
     height: 91px;
     flex-wrap: wrap;
-    margin-top: 70.33px;
+    margin-top: 70px;
 }
 
 .letra {
@@ -102,6 +103,7 @@ body {
     color: #798A9F;
     justify-content: center;
     align-items: center;
+    
 }
 
 .habilitada {
@@ -125,4 +127,48 @@ body {
 
 .incorreta {
     color: #FF0000;
+}
+
+.chute {
+    display: flex;
+    justify-items: center;
+    margin-top: 56px;
+    padding-left: 300px;
+}
+
+.chute h1 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 12px;
+    
+}
+
+.input-digitar {
+    width: 353px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 5px rgba(0,0,0, 0.25);
+    border-radius: 3px;
+}
+
+.botaoChutar {
+    width: 100px;
+    height: 40px;
+    background: #E1ECF4;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3C76A1;
+    margin-left: 15px;
 }

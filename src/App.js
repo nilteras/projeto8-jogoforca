@@ -3,6 +3,7 @@ import palavras from './palavras'
 import Letras from './components/Letras'
 import Jogo from './components/Jogo'
 import { useState } from 'react'
+import Chute from './components/Chute'
 
 export default function App() {
 
@@ -14,29 +15,32 @@ export default function App() {
   const [letraClicada, setletraClicada] = useState([])
   const [qtdErros, setqtdErros] = useState(0)
   const [corLetra, setcorLetra] = useState("")
- // let [tentativa, setTentativa] = useState("")
+  let [tentativa, setTentativa] = useState("")
 
   const renderPalavra = palavraEscolhida.map((l, index) => letraClicada.includes(palavraEscolhida[index]) ? l : " _")
   const palavraAleatoria = palavras[Math.floor(Math.random() * palavras.length)]
 
-  //const [palavraChute, setpalavraChute] = useState(null)
+  const [palavraChute, setpalavraChute] = useState(null)
 
 
   function iniciarJogo() {
     const arrayPalavra = [...palavraAleatoria]
     setpalavraEscolhida(arrayPalavra)
     setDesativado(false)
-    //setTentativa("")
+    setTentativa("")
     setcorLetra("")
     setimagemForca("assets/forca0.png")
     setqtdErros(0)
     setletraClicada([])
+    console.log(arrayPalavra);
+    setpalavraChute(null)
 
   }
 
   function clicarLetra(caracter) {
     const novoArray = [...letraClicada, caracter]
     setletraClicada(novoArray)
+
 
     if (!palavraEscolhida.includes(caracter)) {
       let errosAtual = qtdErros + 1
@@ -59,20 +63,32 @@ export default function App() {
     }
   }
 
-  if(desativado === false){
-    if(renderPalavra.join("") === palavraEscolhida.join("")) {
+  if (desativado === false) {
+    if (renderPalavra.join("") === palavraEscolhida.join("")) {
       jogadorGanhou()
     }
   }
 
-  function jogadorGanhou(){
-    setpalavraEscolhida(palavraEscolhida)
+  function chutarPalavra() {
+    console.log(tentativa)
+    const palavra = palavraEscolhida.join("")
+    if (tentativa === palavra) {
+      jogadorGanhou()
+    } else {
+      jogadorPerdeu()
+    }
+  }
+
+  function jogadorGanhou() {
+    setpalavraChute([...palavraEscolhida])
+    setpalavraEscolhida([])
     setcorLetra("correta")
     setDesativado(true)
   }
 
   function jogadorPerdeu() {
-    setpalavraEscolhida(palavraEscolhida)
+    setpalavraChute([...palavraEscolhida])
+    setpalavraEscolhida([])
     setcorLetra("incorreta")
     setimagemForca("assets/forca6.png")
     setDesativado(true)
@@ -87,9 +103,7 @@ export default function App() {
         iniciarJogo={iniciarJogo}
         corLetra={corLetra}
         palavraAleatoria={palavraAleatoria}
-
-
-
+        palavraChute={palavraChute}
       />
 
       <Letras
@@ -100,6 +114,14 @@ export default function App() {
         desativado={desativado}
         qtdErros={qtdErros}
       />
+
+      <Chute
+        tentativa={tentativa}
+        setTentativa={setTentativa}
+        desativado={desativado}
+        chutarPalavra={chutarPalavra}
+      />
+      
     </div>
   );
 }
